@@ -2,14 +2,16 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"os"
 )
 
 type User struct {
-	Name string `json:"name"`
-	Age  string `json:"age"`
+	Name    string `json:"name"`
+	Address string `json:"address"`
+	Age     string `json:"age"`
 }
 
 func main() {
@@ -72,6 +74,7 @@ func main() {
 	// fmt.Println(multiple(x, y))
 	// fmt.Println(division(x, y))
 	slice()
+	latjson()
 
 }
 
@@ -140,5 +143,18 @@ func slice() {
 	for i, v := range a {
 		fmt.Println(i, v)
 	}
+
+}
+
+func latjson() {
+	var object = []User{{"john", "jakarta", "27"}, {"ambar", "jogja", "10"}, {"ethan", "malang", "32"}}
+	var jsonData, err = json.Marshal(object)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	var jsonString = string(jsonData)
+	fmt.Println(jsonString)
 
 }
