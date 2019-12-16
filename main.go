@@ -12,7 +12,7 @@ type User struct {
 
 func main() {
 	// fmt.Println("Hello word")
-	var jsonString = `{"name":"john wick","age":"27"}`
+	var jsonString = `{"name":"john wicks","age":"27"}`
 	var jsonData = []byte(jsonString)
 
 	var data User
