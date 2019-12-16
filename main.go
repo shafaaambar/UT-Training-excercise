@@ -71,6 +71,7 @@ func main() {
 	// fmt.Println(min(x, y))
 	// fmt.Println(multiple(x, y))
 	// fmt.Println(division(x, y))
+	slice()
 
 }
 
@@ -130,4 +131,14 @@ func operation(x int, y int, s string) {
 	case "division":
 		fmt.Println(division(x, y))
 	}
+}
+
+func slice() {
+	a := []string{"foo1", "Bar1", "foo2", "Bar2"}
+
+	// kvs := map[string]string{"a": "apple", "b": "banana"}
+	for i, v := range a {
+		fmt.Println(i, v)
+	}
+
 }
