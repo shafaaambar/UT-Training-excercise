@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
+	"os"
 )
 
 type User struct {
@@ -45,10 +47,31 @@ func main() {
 	// pointer()
 	x := 5
 	y := 6
-	add(x, y)
-	fmt.Println(min(x, y))
-	fmt.Println(multiple(x, y))
-	fmt.Println(division(x, y))
+	// s := "division"
+
+	input := bufio.NewScanner(os.Stdin)
+
+	for {
+		fmt.Println("Masukan inputan")
+		input.Scan()
+		s := input.Text()
+
+		if len(s) == 0 {
+			break
+		} else {
+			operation(x, y, s)
+		}
+	}
+
+	// input.Scan()
+	// b := input.Text()
+	// fmt.Println(b)
+
+	// add(x, y)
+	// fmt.Println(min(x, y))
+	// fmt.Println(multiple(x, y))
+	// fmt.Println(division(x, y))
+
 }
 
 func calculate(d float64) (float64, error) {
@@ -79,18 +102,32 @@ func pointer() {
 
 }
 
-func add(x int, y int) {
-	fmt.Println(x + y)
+func add(x int, y int) float32 {
+	// fmt.Println(x + y)
+	return float32(x) + float32(y)
 }
 
-func min(x int, y int) int {
-	return x - y
+func min(x int, y int) float32 {
+	return float32(x) - float32(y)
 }
 
-func multiple(x int, y int) int {
-	return x * y
+func multiple(x int, y int) float32 {
+	return float32(x) * float32(y)
 }
 
-func division(x int, y int) int {
-	return x / y
+func division(x int, y int) float32 {
+	return float32(x) / float32(y)
+}
+
+func operation(x int, y int, s string) {
+	switch s {
+	case "add":
+		fmt.Println(add(x, y))
+	case "min":
+		fmt.Println(min(x, y))
+	case "multiple":
+		fmt.Println(multiple(x, y))
+	case "division":
+		fmt.Println(division(x, y))
+	}
 }
